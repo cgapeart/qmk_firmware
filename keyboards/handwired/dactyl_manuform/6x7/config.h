@@ -15,19 +15,40 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#pragma once
-//RP2040 hardeare
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
-#define SERIAL_USART_FULL_DUPLEX
-#define SERIAL_USART_TX_PIN GP6
-#define SERIAL_USART_RX_PIN GP7
-#define WS2812_DI_PIN GP27
-#define RGB_MATRIX_LED_COUNT 86
-#define RGB_MATRIX_SPLIT { 43, 43 }
-#define MASTER_LEFT
-//#define ENCODERS_PAD_A { GP4 }
-//#define ENCODERS_PAD_B { GP5 }
-//#define ENCODERS_PAD_A_RIGHT { GP4 }
-//#define ENCODERS_PAD_B_RIGHT { GP5 }
 
+/*
+     TX      GP0    USB     VBUS
+     RX      GP1    RST     VSYS
+             GND            GND
+     SDA     GP2            3V3_EN
+     SCL     GP3            3V3
+     NEO     GP4            ADC_VREF
+     JSB     GP5            GP28
+             GND            GND     JSGND
+             GP6            GP27    JSX
+             GP7            GP26    JSY
+             GP8            RUN
+     C0      GP9            GP22    R0
+             GND            GND
+     C1      GP10           GP21    R1
+     C2      GP11           GP20    R2
+     C3      GP12           GP19    R3
+     C4      GP13           GP18    R4
+             GND            GND
+     C5      GP14           GP17    R5
+     C6      GP15    SWD    GP16    R6
+
+*/
+
+#pragma once
+//RP2040 hardware
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP25
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
+#define I2C_DRIVER I2CD1
+#define I2C1_SDA_PIN GP2
+#define I2C1_SCL_PIN GP3
+#define SERIAL_USART_FULL_DUPLEX
+#define SERIAL_USART_TX_PIN GP0
+#define SERIAL_USART_RX_PIN GP1
+#define MASTER_LEFT

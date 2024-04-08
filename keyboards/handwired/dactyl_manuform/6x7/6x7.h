@@ -4,5 +4,5 @@
 
 #include "quantum.h"
 
-#define RGB_MATRIX_CENTER { 96, 24 }
+
 
