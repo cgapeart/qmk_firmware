@@ -16,7 +16,9 @@
         "nkro": true,
 		"debug": true,
         "rgb_matrix": true,
-        "rgb_light": false
+        "rgb_light": false,
+        "oled": true,
+        "wpm": true
     },
     "bootmagic": {
         "enabled": true,
@@ -30,6 +32,7 @@
             "sync": {
                 "activity": true,
                 "layer_state": true,
+                "matrix_state": true,
                 "modifiers": true,
                 "indicators": true,
                 "wpm": true,
@@ -46,7 +49,7 @@
     "diode_direction": "COL2ROW",
     "ws2812":{
         "driver": "vendor",
-        "pin": "GP27"
+        "pin": "GP4"
     },
     "rgb_matrix" :{
       "center_point": [112,32],
