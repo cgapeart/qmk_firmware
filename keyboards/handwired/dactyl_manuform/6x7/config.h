@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         SDA     GP2            3V3_EN
         SCL     GP3            3V3
 shifted NEO     GP4            ADC_VREF
-                GP5            GP28    JSB
+        JSB     GP5            GP28
                 GND            GND     JSGND
                 GP6            GP27    JSX
                 GP7            GP26    JSY
@@ -62,6 +62,11 @@ shifted NEO     GP4            ADC_VREF
 #define SPLIT_TRANSACTION_IDS_USER JOYSTICK_SYNC
 #define JS_X_PIN GP27
 #define JS_Y_PIN GP26
-#define JS_B_PIN GP28
-#define SPLIT_JS_SAMPLE_MS 20
+#define JS_B_PIN GP5
+#define SPLIT_JS_SAMPLE_MS 150
 
+#define JSCAL_M_X 0,4096
+#define JSCAL_M_Y 0,4096
+#define JSCAL_S_X 0,4096
+#define JSCAL_S_Y 0,4096
+#define JSCAL_OUT -128,127
