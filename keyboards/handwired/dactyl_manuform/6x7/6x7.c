@@ -13,10 +13,9 @@ void keyboard_post_init_kb(void) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    // if (!is_keyboard_master()) {
-    //     return OLED_ROTATION_180; // flips the display 180 degrees if offhand
-    // }
-
+    if (!is_keyboard_master()) {
+         return OLED_ROTATION_180; // flips the display 180 degrees if offhand
+    }
     return rotation;
 }
 
@@ -38,6 +37,15 @@ bool render_status(void) {
     oled_write_P(PSTR("WPM "), false);
     sprintf(wpmBuffer, "%d", get_current_wpm());
     oled_write(wpmBuffer, false);
+
+    if(is_keyboard_left())
+    {
+        oled_write_P(PSTR("\nLEFT"), false);
+    }
+    else
+    {
+         oled_write_P(PSTR("\nRIGHT"), false);
+    }
     return false;
 }
 
@@ -48,6 +56,24 @@ bool oled_task_user(void) {
     return false;
 }
 
+void oled_render_boot(bool bootloader) {
+    oled_clear();
+    for (int i = 0; i < 16; i++) {
+        oled_set_cursor(0, i);
+        if (bootloader) {
+            oled_write_P(PSTR("Awaiting New Firmware "), false);
+        } else {
+            oled_write_P(PSTR("Rebooting "), false);
+        }
+    }
+
+    oled_render_dirty(true);
+}
+
+bool shutdown_user(bool jump_to_bootloader) {
+    oled_render_boot(jump_to_bootloader);
+    return false;
+}
 typedef struct _joy_master_to_slave_t {
     int req;
 } master_to_slave_t;
